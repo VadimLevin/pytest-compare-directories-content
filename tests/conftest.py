@@ -32,6 +32,9 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     group.addoption("--to-dir", type=existing_dir_path, required=True,
                     help="Path to 'to' existing directory. Usually this "
                     "directory contains 'new' (or 'actual') file set")
+    group.addoption("--skip-tree-comparison", action="store_true",
+                    help="Use this option to skip directories tree comparison "
+                    "test and perform common files comparison only")
 
 
 COMMON_FILES: Sequence[Path]

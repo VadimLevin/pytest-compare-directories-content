@@ -1,3 +1,4 @@
+import pytest
 import filecmp
 from pathlib import Path
 from typing import Sequence, Optional, List
@@ -5,6 +6,8 @@ from typing import Sequence, Optional, List
 from utils import generate_html_diff_file
 
 
+@pytest.mark.skipif("config.getoption('--skip-tree-comparison')",
+                    reason="remove --skip-tree-comparison option to run")
 def test_directories_tree_are_same(from_dir: Path, to_dir: Path) -> None:
     def compare_directories_tree(comparator: filecmp.dircmp,
                                  parent_dir: Optional[Path] = None):
